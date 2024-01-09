@@ -1,0 +1,98 @@
+/* Can use 2 sorted array concept 
+ * Java use string builder.
+ * C++
+*/
+
+class Solution {
+public:
+    string mergeAlternately(string word1, string word2) {
+        int i = 0;
+        int j = 0;
+
+        bool flag = false;
+
+        string result = "";
+        while(i < word1.length() && j < word2.length()) {
+            if(flag == false) {
+                result += word1[i];
+                i++;
+            } else{
+                result += word2[j];
+                j++;
+            }
+            flag = !flag;
+        }
+
+        while(i < word1.length()) {
+            result += word1[i];
+            i++;
+        }
+
+        while(j < word2.length()) {
+            result += word2[j];
+            j++;
+        }
+
+        return result;
+    }
+};
+
+///////////////////////////
+
+class Solution {
+public:
+    string mergeAlternately(string word1, string word2) {
+        int i = 0;
+
+        string result = "";
+        while (i < word1.length() || i < word2.length()) {
+            if (i < word1.length()) {
+                result += word1[i];
+            }
+            if(i < word2.length()) {
+                result += word2[i];
+            }
+            i++;
+        }
+
+        return result;
+    }
+};
+
+////////////////////////////////////
+
+class Solution {
+public:
+    string mergeAlternately(string word1, string word2) {
+        int i = 0;
+
+        std::stringstream ss;
+        while (i < word1.length() || i < word2.length()) {
+            if (i < word1.length()) {
+                ss << word1[i];
+            }
+            if(i < word2.length()) {
+                ss << word2[i];
+            }
+            i++;
+        }
+
+        return ss.str();
+    }
+};
+
+//////////////////////////
+
+class Solution:
+    def mergeAlternately(self, word1: str, word2: str) -> str:
+        result = []
+
+        i = 0
+        while i < len(word1) or i < len(word2):
+            if i < len(word1):
+                result.append(word1[i])
+            if i < len(word2):
+                result.append(word2[i])
+            i += 1
+        
+        return ''.join(result)
